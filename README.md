@@ -8,11 +8,10 @@
 </p>
 
 ## Установка
-* Скачать архив репозитория.
-* Распаковать.
-* Установить `anime-ongoing.xml`.
-* Подключить или перенести стили из `ongoing.css`.
-* Скачать [magnific-popup](https://dimsemenov.com/plugins/magnific-popup/) и так же установить на сайт.
+1. Скачать архив репозитория и распаковать
+2. Установить `anime-ongoing.xml` в систему
+3. Подключить или перенести стили из `ongoing.css`
+4. Скачать [magnific-popup](https://dimsemenov.com/plugins/magnific-popup/) и так же установить на сайт
 
 ## Раздел на сайте
 После установки модуля раздел будет доступен по адресу `/?do=ongoing`, либо можете добавить ЧПУ правило.
@@ -24,6 +23,9 @@ RewriteRule ^ongoing(/?)$ index.php?do=ongoing [L]
 
 ## Изменение языка
 В плагине в редактировании файла `engine/modules/ongoing.php` находим `data-name="{$animes['anime']['name']}"` и заменяем '**name**' на '**russian**'.
+
+## Касательно прочей разметки раздела
+В плагине есть функция `shiki_cals()` в ней в переменных `$buffer` прописаны HTML объекты. Вся разметка описывается в них.
 
 ## JavaScript функция отображения окна с поиском похожих новостей на сайте.
 Вызов модального окна реализован на примере плагина [magnific-popup](https://dimsemenov.com/plugins/magnific-popup/)
