@@ -7,6 +7,13 @@
 <img src="https://user-images.githubusercontent.com/44625352/178162946-5e767cf3-313e-4ec1-bcb6-617ffd3aa7f6.jpg" alt="Anime-ongoing-shikimori">
 </p>
 
+## Установка
+* Скачать архив репозитория.
+* Распаковать.
+* Установить `anime-ongoing.xml`.
+* Подключить или перенести стили из `ongoing.css`.
+* Скачать [magnific-popup](https://dimsemenov.com/plugins/magnific-popup/) и так же установить на сайт.
+
 ## Раздел на сайте
 После установки модуля раздел будет доступен по адресу `/?do=ongoing`, либо можете добавить ЧПУ правило.
 
