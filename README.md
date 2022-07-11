@@ -27,6 +27,24 @@ RewriteRule ^ongoing(/?)$ index.php?do=ongoing [L]
 ## Касательно прочей разметки раздела
 В плагине есть функция `shiki_cals()` в ней в переменных `$buffer` прописаны HTML объекты. Вся разметка описывается в них.
 
+> У блоков есть наличие рандомных `class` имен цветов, для окрашивания к соответствующие цвета добавьте правила в CSS с соответствующими именами.
+> Представлено 11 названий.
+```php
+	$arr_color = array(
+		'red',
+		'pink',
+		'blue',
+		'green',
+		'orange',
+ 		'brown',
+		'powderblue',
+		'skyblue',
+		'purple',
+		'magenta',
+		'brown'
+	);
+  ```
+
 ## JavaScript функция отображения окна с поиском похожих новостей на сайте.
 Вызов модального окна реализован на примере плагина [magnific-popup](https://dimsemenov.com/plugins/magnific-popup/)
 ```js
