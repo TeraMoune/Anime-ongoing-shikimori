@@ -54,28 +54,44 @@ if( ! $calAnime_json ) {
 
 function shiki_cals() {
 	global $anime_info, $langdate, $arr_date, $config;
-	
+
+	$arr_color = array(
+		'red',
+		'pink',
+		'blue',
+		'green',
+		'orange',
+ 		'brown',
+		'powderblue',
+		'skyblue',
+		'purple',
+		'magenta',
+		'brown'
+	);
+
 	$buffer = '<div id="ongoing-calendar">';
 	$buffer .= '<header class="head"><h1>Календарь онгоингов</h1><div class="notice"><p>Данный раздел отображает аниме онгоинги текущего сезона и близлежащие анонсы.</p><p>Выходы серий отслеживаются автоматически по <a href="https://shikimori.org/ongoings">API Shikimori</a>.</p></div></header>';
-	
-	foreach( $anime_info as $key => $row ) {
-				
-				$date = strtotime($row[0]['next_episode_at']);	
 
-				if( $key == 'now' ) $buffer .= '<div class="block clrfix"><div class="headline">УЖЕ ДОЛЖНО БЫЛО ВЫЙТИ <span class="count-ognoing">'.$arr_date[$key].'</span></div><div class="cc-entries d-cutted_covers" data-dynamic="cutted_covers" id="cutted_covers_3">';
-				else $buffer .= '<div class="block clrfix"><div class="headline">'.$langdate[date('l', $date)].', '.date('j', $date).' '.$langdate[date('F', $date)].' <span class="count-ognoing">'.$arr_date[$key].'</span></div><div class="cc-entries d-cutted_covers" data-dynamic="cutted_covers" id="cutted_covers_3">';
-				
-				foreach($row as $animes) {
-					
-				$next_episode_tmp = strtotime($animes['next_episode_at']);
-				$date = langdate( 'j-m-Y, H:i', $next_episode_tmp );	
-				
-                $name = $animes['anime']['russian'] ? $animes['anime']['russian'] : $animes['anime']['name'];  
-                  
-                if( $config['image_lazy'] ) $img = " data-src=\"https://shikimori.org{$animes['anime']['image']['preview']}\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" style=\"min-height: 224px; min-width: 160px;\"";
-                else $img = " src=\"https://shikimori.org{$animes['anime']['image']['preview']}\"";    
-                  
-				$buffer .= <<<HTML
+	foreach( $anime_info as $key => $row ) {
+
+		$get_rand_color = array_rand($arr_color, 1);
+
+		$date = strtotime($row[0]['next_episode_at']);	
+
+		if( $key == 'now' ) $buffer .= '<div class="block '. $arr_color[$get_rand_color] . ' clrfix"><div class="headline">УЖЕ ДОЛЖНО БЫЛО ВЫЙТИ <span class="count-ognoing">'.$arr_date[$key].'</span></div><div class="cc-entries d-cutted_covers" data-dynamic="cutted_covers" id="cutted_covers_3">';
+		else $buffer .= '<div class="block '. $arr_color[$get_rand_color] . ' clrfix"><div class="headline">'.$langdate[date('l', $date)].', '.date('j', $date).' '.$langdate[date('F', $date)].' <span class="count-ognoing">'.$arr_date[$key].'</span></div><div class="cc-entries d-cutted_covers" data-dynamic="cutted_covers" id="cutted_covers_3">';
+
+		foreach($row as $animes) {
+	
+			$next_episode_tmp = strtotime($animes['next_episode_at']);
+			$date = langdate( 'j-m-Y, H:i', $next_episode_tmp );	
+	
+                	$name = $animes['anime']['russian'] ? $animes['anime']['russian'] : $animes['anime']['name'];  
+
+                	if( $config['image_lazy'] ) $img = " data-src=\"https://shikimori.org{$animes['anime']['image']['preview']}\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" style=\"min-height: 224px; min-width: 160px;\"";
+                	else $img = " src=\"https://shikimori.org{$animes['anime']['image']['preview']}\"";    
+
+			$buffer .= <<<HTML
 <article class="c-column b-catalog_entry c-anime"  itemscope="" itemtype="http://schema.org/Movie">
 <a class="cover anime-tooltip-processed" href="https://shikimori.org{$animes['anime']['url']}">
 <span class="image-decor">
@@ -98,11 +114,11 @@ function shiki_cals() {
 </span>
 </article>
 HTML;
-					
-				}
-				
-				$buffer .= '</div></div>';
-				
+			
+		}
+		
+		$buffer .= '</div></div>';
+		
 	}
 
 	
