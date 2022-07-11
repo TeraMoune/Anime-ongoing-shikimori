@@ -47,6 +47,9 @@ RewriteRule ^ongoing(/?)$ index.php?do=ongoing [L]
 
 ## JavaScript функция отображения окна с поиском похожих новостей на сайте.
 Вызов модального окна реализован на примере плагина [magnific-popup](https://dimsemenov.com/plugins/magnific-popup/)
+
+> Если данная штука не нужна, то в xml плагине найти `onclick="ongoing_find(this); return false;"` и удалить. А так же `svg` объект который находится строкой ниже.
+
 ```js
 function ongoing_find(obj) {
     
