@@ -87,3 +87,7 @@ function ongoing_find(obj) {
 ```php
 file_get_contents('https://shikimori.one/api/calendar');
 ```
+
+
+### Поддержка и благорадность
+Можете не париться, никто не париться 😓
